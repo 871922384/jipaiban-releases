@@ -2,7 +2,8 @@
 
 This repository is the **product-release** repo for 极排班.
 
-- Source of truth for code remains the private product repos (`jipaiban-api`, `jipaiban-admin`, `jipaiban-ios`, `ji_paiban`, `scheduling_wechat`).
+- This GitHub repository is public so testers and users can download binaries without signing in.
+- Source of truth for code remains the private product repos (`jipaiban-api`, `jipaiban-admin`, `jipaiban-ios`, `ji_paiban`, `scheduling_wechat`). Do not copy source here.
 - This repo publishes finished installable artifacts only, via GitHub Releases.
 - Never commit application source, secrets, keystores, provisioning profiles, or `.env` files here.
 - Never `git add` IPA / APK / AAB / xcarchive. Attach them with `./scripts/publish-release.sh`.

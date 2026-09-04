@@ -14,6 +14,19 @@
 
 网页与接口：https://jipaiban.junshian.cn
 
+## 智能体
+
+把极排班接到 WorkBuddy / Claude / Cursor / Grok：用户打开 [连接页](https://jipaiban.junshian.cn/agent/connect) 生成配对码，智能体按 [`skills/jipaiban/SKILL.md`](skills/jipaiban/SKILL.md) 兑权并调用托管 MCP。
+
+把该目录装进客户端的 skills 路径即可，例如：
+
+```bash
+git clone --depth 1 https://github.com/871922384/jipaiban-releases.git
+cp -R jipaiban-releases/skills/jipaiban ~/.grok/skills/jipaiban
+```
+
+不要把配对码或 token 写进 URL。
+
 ## 说明
 
 - 包体只作为 Release 附件，不会出现在 Git 文件树里。

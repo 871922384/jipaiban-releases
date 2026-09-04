@@ -5,9 +5,10 @@ This is the **public product-release** repo for 极排班.
 ## Role
 
 - Public GitHub repository so anyone can download binaries without signing in.
-- Git tree: docs and `scripts/publish-release.sh` only.
+- Git tree: docs, the public agent skill `skills/jipaiban/`, and `scripts/publish-release.sh` only.
 - Binaries: GitHub Release assets only.
 - Source stays in private repos. Server deploy stays in `jipaiban-api`.
+- The public skill is a sanitized client of the hosted MCP. API contracts still live in `jipaiban-api`.
 
 ## Process
 
@@ -23,6 +24,8 @@ Use `--dry-run` before a real publish.
 
 - Never commit source, secrets, keystores, provisioning profiles, `.env`, IPA, APK, AAB, or xcarchive.
 - Never publish debug / unsigned / dirty / dev artifacts.
+- Never put pairing codes, tokens, phone numbers, SSH keys, production IPs, or `dev-login` into `skills/` or release notes.
+- The public skill may document hosted MCP + pairing redeem/refresh only. Do not dump the private OpenAPI, admin write APIs, or deploy runbooks.
 - Tags are `vMAJOR.MINOR.PATCH`. Do not retarget a published tag.
 - If asked to 发版 a client installable, build in `jipaiban-ios` or `ji_paiban` first, then publish the finished file here.
 - If asked to 发版 the API or admin site, do not use this repo.

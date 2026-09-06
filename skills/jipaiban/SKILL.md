@@ -1,14 +1,17 @@
 ---
 name: jipaiban
 description: >
-  连接极排班托管 MCP：自动领取试用会话，创建排班小组、写入班表并分享链接。
-  已有医院账号时用配对码查询自己的班表和通知。
-  用户提到极排班、排班、班表、值班、小组排班、把极排班接到智能体，或运行 /jipaiban 时使用。
+  极排班的公开 Agent 技能。连接托管 MCP，自动领取试用会话，创建排班小组、写入班表并分享链接；
+  已有医院账号时用一次性配对码查询自己的班表和通知。用户提到极排班、排班、班表、值班、
+  小组排班、把极排班接到智能体，或运行 /jipaiban 时使用。适用于支持 skills 或远程 MCP 的 Agent，
+  包括 WorkBuddy、Claude、Cursor、Grok、Codex 等客户端。
 ---
 
 # 极排班
 
 用托管 MCP 排出一张可分享的班表。不要编造班次。不要向用户索要手机号、短信验证码或密码。
+
+公开接入说明：[docs/agent.md](https://github.com/871922384/jipaiban-releases/blob/main/docs/agent.md)。
 
 生产环境：
 

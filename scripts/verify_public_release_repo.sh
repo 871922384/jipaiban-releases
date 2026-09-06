@@ -18,11 +18,19 @@ if git grep -n -E \
 fi
 
 test -f docs/index.html
+test -f docs/agent.md
+test -f docs/agent.html
+test -f skills/jipaiban/SKILL.md
 test -f docs/images/week-edit.png
 test -f docs/images/month-edit.png
 test -f docs/images/statistics.png
 test -f docs/images/import-schedule.png
 grep -Eq 'rexmacbook-air\.tail3e5479\.ts\.net/i' docs/index.html
+grep -Eq 'jipaiban\.junshian\.cn/mcp' docs/index.html
+grep -Eq 'jipaiban\.junshian\.cn/mcp' docs/agent.md
+grep -Eq 'jipaiban\.junshian\.cn/mcp' docs/agent.html
+grep -Eq 'skills/jipaiban(/|/SKILL\.md)' README.md
 grep -Eq 'IPA 不上传|IPA.*GitHub' docs/index.html
+grep -Eqi 'token.*URL|token.*url' docs/agent.md README.md skills/jipaiban/SKILL.md
 echo "ok: no installable binaries, secrets, or private infrastructure literals"
-echo "ok: product page and real screenshot assets are present"
+echo "ok: product page, Agent entry, skill, and real screenshot assets are present"

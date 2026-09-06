@@ -13,11 +13,9 @@ IPA 不上传到 GitHub 文件树，也不作为公开 Release 附件；公开�
 
 ## 怎么装
 
-1. 打开 [Releases](https://github.com/871922384/jipaiban-releases/releases/latest)
-2. 按系统下载：
-   - **Android**：`.apk`
-   - **iOS**：`.ipa`（需按该版本说明安装，或走 App Store / TestFlight）
-3. Android 允许安装未知来源后打开 APK。
+1. **iOS 测试版**：在已获批准的测试网络中打开[固定测试入口](https://rexmacbook-air.tail3e5479.ts.net/i)。
+2. **公开成品**：只有经过维护者明确批准的版本才会出现在 [Releases](https://github.com/871922384/jipaiban-releases/releases/latest)。
+3. 当前版本不上传 IPA 到 GitHub 文件树或公开 Release；需要公开下载时，必须单独走发布审批。
 
 网页与接口：https://jipaiban.junshian.cn
 

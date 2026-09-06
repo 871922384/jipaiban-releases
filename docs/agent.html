@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="极排班给智能体的公开接入说明：技能、托管 MCP 与安全边界。">
+  <title>极排班 | Agent 接入</title>
+  <style>
+    :root { color-scheme:light; --ink:#17202b; --muted:#66717d; --line:#dfe5e9; --paper:#f6f8f9; --blue:#1769e0; --blue-soft:#e9f1ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif; line-height:1.65; }
+    .shell { max-width:900px; margin:0 auto; padding:0 24px 64px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-bottom:1px solid var(--line); }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:700; }
+    .mark { width:32px; height:32px; border-radius:9px; display:grid; place-items:center; color:#fff; background:var(--blue); }
+    header a { color:var(--muted); font-size:14px; text-decoration:none; }
+    main { padding-top:56px; }
+    .eyebrow { color:var(--blue); font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    h1 { margin:10px 0 14px; font-size:clamp(36px,6vw,58px); line-height:1.08; letter-spacing:-.02em; }
+    .lede { max-width:680px; margin:0; color:var(--muted); font-size:19px; }
+    section { padding:44px 0; border-top:1px solid var(--line); }
+    section:first-of-type { margin-top:46px; }
+    h2 { margin:0 0 16px; font-size:27px; }
+    h3 { margin:0 0 6px; font-size:17px; }
+    p { margin:0 0 16px; }
+    .muted { color:var(--muted); }
+    .steps { display:grid; gap:12px; margin:0; padding:0; list-style:none; }
+    .steps li { display:grid; grid-template-columns:120px 1fr; gap:16px; padding:15px 0; border-bottom:1px solid var(--line); }
+    .steps li:last-child { border-bottom:0; }
+    .steps span { color:var(--muted); }
+    code { padding:2px 5px; border-radius:5px; background:#eef2f5; color:#334454; font-size:.92em; }
+    pre { overflow:auto; margin:16px 0 0; padding:16px; border-radius:10px; color:#eaf2ff; background:#15202d; font-size:13px; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .panel { padding:22px; background:#fff; border:1px solid var(--line); border-radius:12px; }
+    .notice { margin-top:18px; padding:14px 16px; border-left:3px solid var(--blue); background:var(--blue-soft); color:#24405f; }
+    a { color:var(--blue); }
+    footer { padding-top:26px; color:var(--muted); font-size:13px; }
+    @media (max-width:620px) { .shell { padding:0 18px 48px; } header { gap:14px; } main { padding-top:42px; } .grid { grid-template-columns:1fr; } .steps li { grid-template-columns:1fr; gap:2px; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header><div class="brand"><span class="mark">极</span><span>极排班</span></div><a href="./">返回产品页</a></header>
+    <main>
+      <div class="eyebrow">public agent entry</div>
+      <h1>让智能体接住班表。</h1>
+      <p class="lede">极排班是面向医护人员的排班工作台。智能体可以先读取现有班表，再帮助用户补充、核对和分享安排；用户不需要把手机号、验证码或密码交给智能体。</p>
+      <section>
+        <h2>三步接入</h2>
+        <ol class="steps">
+          <li><strong>导入技能</strong><span>复制 <code>skills/jipaiban/</code> 到客户端的 skills 目录，或直接阅读 <a href="https://github.com/871922384/jipaiban-releases/blob/main/skills/jipaiban/SKILL.md">SKILL.md</a>。</span></li>
+          <li><strong>添加 MCP</strong><span><code>https://jipaiban.junshian.cn/mcp</code></span></li>
+          <li><strong>确认身份</strong><span><code>initialize → tools/list → whoami</code>，确认后再操作班表。</span></li>
+        </ol>
+        <pre>git clone --depth 1 https://github.com/871922384/jipaiban-releases.git
+AGENT_SKILLS_DIR="/path/to/your/agent/skills"
+cp -R jipaiban-releases/skills/jipaiban "$AGENT_SKILLS_DIR/jipaiban"</pre>
+      </section>
+      <section>
+        <h2>能力边界</h2>
+        <div class="grid">
+          <div class="panel"><h3>Guest 试用</h3><p class="muted">创建自己的排班小组、写入班次、查看班表、生成分享链接。</p><p class="muted">不能查看医院科室班表，也不能访问别人的小组。</p></div>
+          <div class="panel"><h3>医院配对</h3><p class="muted">读取自己的班表、按权限查看科室班表、读取通知。</p><p class="muted">不能代用户登录、发布正式班表或修改密码。</p></div>
+        </div>
+        <div class="notice">不要把 token 写进 URL。没有返回的数据就明确说没有数据，不猜测班次。用户要保住班表或绑定医院账号时，再打开<a href="https://jipaiban.junshian.cn/agent/connect">连接页</a>。</div>
+      </section>
+      <section>
+        <h2>公开文档</h2>
+        <p><a href="https://github.com/871922384/jipaiban-releases/blob/main/docs/agent.md">Markdown 接入说明</a> · <a href="https://github.com/871922384/jipaiban-releases/tree/main/skills/jipaiban/references">MCP 协议与工具参考</a> · <a href="https://github.com/871922384/jipaiban-releases">公开仓</a></p>
+      </section>
+    </main>
+    <footer>极排班 · 医护排班工作台</footer>
+  </div>
+</body>
+</html>

@@ -47,6 +47,12 @@
     .panel h3 { margin:0 0 10px; font-size:20px; }
     .panel p { color:var(--muted); margin:0 0 18px; }
     .notice { padding:14px 16px; border-left:3px solid var(--blue); background:var(--blue-soft); color:#24405f; font-size:14px; }
+    .steps { margin:0 0 18px; padding:0; list-style:none; display:grid; gap:14px; }
+    .steps li { display:grid; grid-template-columns:112px 1fr; gap:14px; align-items:baseline; padding-bottom:12px; border-bottom:1px solid var(--line); }
+    .steps li:last-child { padding-bottom:0; border-bottom:0; }
+    .steps strong { font-size:15px; }
+    .steps span { color:var(--muted); font-size:14px; }
+    code { padding:2px 5px; border-radius:5px; background:#eef2f5; color:#334454; font-size:.92em; }
     .docs { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
     .doc { padding:20px; border:1px solid var(--line); border-radius:12px; background:white; text-decoration:none; }
     .doc:hover { border-color:#a9c7f6; }
@@ -54,6 +60,7 @@
     .doc span { color:var(--muted); font-size:14px; }
     footer { display:flex; justify-content:space-between; gap:20px; padding-top:30px; color:var(--muted); font-size:13px; }
     @media (max-width:800px) { .shell { padding:0 18px 50px; } header { align-items:flex-start; gap:18px; } nav { gap:12px; flex-wrap:wrap; justify-content:flex-end; } .hero { grid-template-columns:1fr; gap:34px; padding:52px 0 48px; } .device { justify-self:center; max-width:330px; } .features,.docs { grid-template-columns:1fr 1fr; } .gallery { grid-template-columns:1fr; max-width:390px; } .access { grid-template-columns:1fr; } .section-head { display:block; } .section-head p { margin-top:10px; } }
+    @media (max-width:520px) { .steps li { grid-template-columns:1fr; gap:2px; } }
     @media (max-width:480px) { h1 { font-size:46px; } .lede { font-size:17px; } .features,.docs { grid-template-columns:1fr; } footer { display:block; } footer span { display:block; margin-top:8px; } }
   </style>
 </head>
@@ -61,7 +68,7 @@
   <div class="shell">
     <header>
       <div class="brand"><span class="mark">极</span><span>极排班</span></div>
-      <nav aria-label="页面导航"><a href="#product">产品</a><a href="#preview">界面</a><a href="#access">测试</a><a href="#docs">文档</a></nav>
+      <nav aria-label="页面导航"><a href="#product">产品</a><a href="#preview">界面</a><a href="#access">测试</a><a href="#agent">Agent</a><a href="#docs">文档</a></nav>
     </header>
 
     <main>
@@ -103,10 +110,19 @@
         </div>
       </section>
 
+      <section class="section" id="agent">
+        <div class="section-head"><h2>让智能体接住班表</h2><p>极排班的公开技能和托管 MCP 是同一个产品入口：先确认身份，再查看、补充和分享排班。</p></div>
+        <div class="access">
+          <div class="panel"><h3>公开 Agent 技能</h3><p>支持 skills 或远程 MCP 的客户端，都可以从同一份技能正文开始。Guest 先试用；需要医院数据时，再由用户在连接页完成配对。</p><div class="actions"><a class="button primary" href="agent.html">打开接入页 ↗</a><a class="button secondary" href="https://github.com/871922384/jipaiban-releases/blob/main/skills/jipaiban/SKILL.md">查看技能</a></div></div>
+          <div class="panel"><h3>三步开始</h3><ol class="steps"><li><strong>导入技能</strong><span>复制 <code>skills/jipaiban/</code> 到客户端的 skills 目录。</span></li><li><strong>添加 MCP</strong><span><code>https://jipaiban.junshian.cn/mcp</code></span></li><li><strong>确认身份</strong><span><code>initialize → tools/list → whoami</code></span></li></ol><div class="notice">不要把 token 写进 URL。没有返回的数据就明确说没有数据，不猜测班次。</div></div>
+        </div>
+      </section>
+
       <section class="section" id="docs">
         <div class="section-head"><h2>产品与维护文档</h2><p>从产品介绍到公开仓维护规则，所有链接都指向可审阅的版本化文档。</p></div>
         <div class="docs">
           <a class="doc" href="README.md"><strong>公开仓说明</strong><span>安装、版本与智能体连接说明</span></a>
+          <a class="doc" href="https://github.com/871922384/jipaiban-releases/blob/main/docs/agent.md"><strong>Agent 接入页</strong><span>技能安装、MCP 地址与安全边界</span></a>
           <a class="doc" href="docs/release-process.md"><strong>发布流程</strong><span>构建、测试、发布与禁止事项</span></a>
           <a class="doc" href="docs/release-notes-template.md"><strong>版本说明模板</strong><span>每次测试包发布时使用</span></a>
         </div>

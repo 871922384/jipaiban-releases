@@ -19,18 +19,17 @@ IPA 不上传到 GitHub 文件树，也不作为公开 Release 附件；公开�
 
 网页与接口：https://jipaiban.junshian.cn
 
-## 智能体
+## 给智能体的公开入口
 
-把极排班接到 WorkBuddy / Claude / Cursor / Grok：用户打开 [连接页](https://jipaiban.junshian.cn/agent/connect) 生成配对码，智能体按 [`skills/jipaiban/SKILL.md`](skills/jipaiban/SKILL.md) 兑权并调用托管 MCP。
+极排班提供一份可直接读取的公开技能，适用于 WorkBuddy、Claude、Cursor、Grok、Codex 以及其他支持 skills / 远程 MCP 的 Agent。
 
-把该目录装进客户端的 skills 路径即可，例如：
+从[智能体快速接入页](https://github.com/871922384/jipaiban-releases/blob/main/docs/agent.md)开始，里面有三步接入、Guest 与医院账号的能力边界，以及安全规则：
 
-```bash
-git clone --depth 1 https://github.com/871922384/jipaiban-releases.git
-cp -R jipaiban-releases/skills/jipaiban ~/.grok/skills/jipaiban
-```
+1. 导入 [`skills/jipaiban/`](https://github.com/871922384/jipaiban-releases/tree/main/skills/jipaiban) 目录。
+2. 将 `https://jipaiban.junshian.cn/mcp` 添加为远程 MCP。
+3. 按 `initialize → tools/list → whoami` 确认身份后再操作班表。
 
-不要把配对码或 token 写进 URL。
+用户只在要保住班表或绑定医院账号时打开[连接页](https://jipaiban.junshian.cn/agent/connect)。不要把配对码或 token 写进 URL；不要向用户索要手机号、验证码或密码。
 
 ## 说明
 

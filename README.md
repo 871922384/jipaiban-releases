@@ -4,6 +4,13 @@
 
 [最新下载](https://github.com/871922384/jipaiban-releases/releases/latest)
 
+[产品页与测试版入口](https://871922384.github.io/jipaiban-releases/)
+
+测试版安装入口需要批准的测试网络访问权限：
+https://rexmacbook-air.tail3e5479.ts.net/i
+
+IPA 不上传到 GitHub 文件树，也不作为公开 Release 附件；公开仓只维护产品说明、真实界面图片和访问入口。
+
 ## 怎么装
 
 1. 打开 [Releases](https://github.com/871922384/jipaiban-releases/releases/latest)

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="极排班 iOS 测试版、产品说明与真实界面预览。">
+  <title>极排班 | iOS 测试版</title>
+  <style>
+    :root { color-scheme: light; --ink:#17202b; --muted:#66717d; --line:#dfe5e9; --paper:#f6f8f9; --blue:#1769e0; --blue-soft:#e9f1ff; --green:#11775b; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+    a { color:inherit; }
+    .shell { max-width:1180px; margin:0 auto; padding:0 28px 72px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-bottom:1px solid var(--line); }
+    .brand { display:flex; gap:12px; align-items:center; font-weight:700; letter-spacing:.02em; }
+    .mark { width:34px; height:34px; border-radius:10px; display:grid; place-items:center; color:white; background:var(--blue); font-weight:800; }
+    nav { display:flex; gap:22px; color:var(--muted); font-size:14px; }
+    nav a { text-decoration:none; }
+    nav a:hover { color:var(--blue); }
+    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; padding:74px 0 66px; }
+    .eyebrow { color:var(--blue); font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:12px 0 18px; font-size:clamp(42px,6vw,76px); line-height:1.05; letter-spacing:-.02em; }
+    .lede { max-width:590px; color:var(--muted); font-size:20px; margin:0 0 28px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+    .button { display:inline-flex; align-items:center; gap:9px; min-height:46px; padding:0 18px; border-radius:12px; text-decoration:none; font-weight:700; border:1px solid transparent; }
+    .button.primary { color:white; background:var(--blue); box-shadow:0 8px 20px rgba(23,105,224,.18); }
+    .button.secondary { background:white; border-color:var(--line); }
+    .button:hover { transform:translateY(-1px); }
+    .gate { display:inline-flex; align-items:center; gap:8px; color:var(--green); font-size:13px; }
+    .gate::before { content:""; width:8px; height:8px; border-radius:50%; background:#27a477; }
+    .device { justify-self:end; width:min(100%,390px); padding:13px; border-radius:32px; background:#151a20; box-shadow:0 24px 58px rgba(24,37,50,.2); transform:rotate(2deg); }
+    .device img { display:block; width:100%; border-radius:23px; }
+    .section { padding:64px 0; border-top:1px solid var(--line); }
+    .section-head { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom:28px; }
+    h2 { margin:0; font-size:32px; letter-spacing:-.015em; }
+    .section-head p { max-width:520px; color:var(--muted); margin:0; }
+    .features { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .feature { background:white; border:1px solid var(--line); border-radius:14px; padding:22px; }
+    .feature strong { display:block; margin-bottom:8px; font-size:17px; }
+    .feature p { color:var(--muted); margin:0; font-size:14px; }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start; }
+    figure { margin:0; }
+    figure img { display:block; width:100%; border-radius:20px; border:1px solid var(--line); box-shadow:0 12px 26px rgba(31,47,62,.1); background:#111; }
+    figcaption { padding:12px 4px 0; color:var(--muted); font-size:14px; }
+    .access { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .panel { background:white; border:1px solid var(--line); border-radius:14px; padding:26px; }
+    .panel h3 { margin:0 0 10px; font-size:20px; }
+    .panel p { color:var(--muted); margin:0 0 18px; }
+    .notice { padding:14px 16px; border-left:3px solid var(--blue); background:var(--blue-soft); color:#24405f; font-size:14px; }
+    .docs { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .doc { padding:20px; border:1px solid var(--line); border-radius:12px; background:white; text-decoration:none; }
+    .doc:hover { border-color:#a9c7f6; }
+    .doc strong { display:block; margin-bottom:5px; }
+    .doc span { color:var(--muted); font-size:14px; }
+    footer { display:flex; justify-content:space-between; gap:20px; padding-top:30px; color:var(--muted); font-size:13px; }
+    @media (max-width:800px) { .shell { padding:0 18px 50px; } header { align-items:flex-start; gap:18px; } nav { gap:12px; flex-wrap:wrap; justify-content:flex-end; } .hero { grid-template-columns:1fr; gap:34px; padding:52px 0 48px; } .device { justify-self:center; max-width:330px; } .features,.docs { grid-template-columns:1fr 1fr; } .gallery { grid-template-columns:1fr; max-width:390px; } .access { grid-template-columns:1fr; } .section-head { display:block; } .section-head p { margin-top:10px; } }
+    @media (max-width:480px) { h1 { font-size:46px; } .lede { font-size:17px; } .features,.docs { grid-template-columns:1fr; } footer { display:block; } footer span { display:block; margin-top:8px; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand"><span class="mark">极</span><span>极排班</span></div>
+      <nav aria-label="页面导航"><a href="#product">产品</a><a href="#preview">界面</a><a href="#access">测试</a><a href="#docs">文档</a></nav>
+    </header>
+
+    <main>
+      <section class="hero" id="product">
+        <div>
+          <div class="eyebrow">iOS test build · 1.5 (14)</div>
+          <h1>把每一天<br>排得更清楚。</h1>
+          <p class="lede">面向医护人员的轻量排班工具。周视图、月视图、班次模板、工时修正和统计，都在一个安静而直接的工作台里。</p>
+          <div class="actions"><a class="button primary" href="https://rexmacbook-air.tail3e5479.ts.net/i">打开测试版安装页 <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://github.com/871922384/jipaiban-releases/releases">查看公开版本</a></div>
+          <p class="gate">测试链接需要已获批准的测试网络访问权限</p>
+        </div>
+        <div class="device"><img src="images/week-edit.png" alt="极排班周视图与当天编辑面板"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>为真实排班留出余地</h2><p>不把排班变成复杂的表格操作。每个动作都围绕查看、补充和核对当天安排。</p></div>
+        <div class="features">
+          <div class="feature"><strong>周视图与月视图</strong><p>快速定位今天、这周和整月的班次分布。</p></div>
+          <div class="feature"><strong>班次模板</strong><p>常用白班、夜班和休息一键加入当天。</p></div>
+          <div class="feature"><strong>工时修正</strong><p>加班与扣减单独记录，支持撤销并同步统计。</p></div>
+          <div class="feature"><strong>导入与统计</strong><p>从整张班表开始，也能回看每月工作量。</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="preview">
+        <div class="section-head"><h2>真实界面预览</h2><p>以下图片来自当前 iOS 测试构建，不是宣传渲染图。界面中的内容为测试数据。</p></div>
+        <div class="gallery">
+          <figure><img src="images/month-edit.png" alt="极排班月视图当天编辑面板"><figcaption>月视图：浏览日期后，再明确进入编辑。</figcaption></figure>
+          <figure><img src="images/statistics.png" alt="极排班统计页面"><figcaption>统计：按班次与日期分布回看工作量。</figcaption></figure>
+          <figure><img src="images/import-schedule.png" alt="极排班导入班表页面"><figcaption>导入班表：对齐整张表后确认本人信息。</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="section" id="access">
+        <div class="section-head"><h2>测试版访问</h2><p>安装入口与公开源码仓分离，便于控制测试范围，也避免把安装包误当作源码提交。</p></div>
+        <div class="access">
+          <div class="panel"><h3>打开测试安装页</h3><p>在已接入批准测试网络的 iPhone 上打开，按页面提示安装当前测试包。</p><a class="button primary" href="https://rexmacbook-air.tail3e5479.ts.net/i">打开固定入口 ↗</a></div>
+          <div class="panel"><h3>访问边界</h3><p>IPA 不上传到 GitHub 文件树，也不作为公开 Release 附件。公开仓只提供说明、图片和访问入口。</p><div class="notice">如果页面无法打开，请先确认测试网络权限，再联系维护者更新访问范围。</div></div>
+        </div>
+      </section>
+
+      <section class="section" id="docs">
+        <div class="section-head"><h2>产品与维护文档</h2><p>从产品介绍到公开仓维护规则，所有链接都指向可审阅的版本化文档。</p></div>
+        <div class="docs">
+          <a class="doc" href="README.md"><strong>公开仓说明</strong><span>安装、版本与智能体连接说明</span></a>
+          <a class="doc" href="docs/release-process.md"><strong>发布流程</strong><span>构建、测试、发布与禁止事项</span></a>
+          <a class="doc" href="docs/release-notes-template.md"><strong>版本说明模板</strong><span>每次测试包发布时使用</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>极排班 · 医护排班工作台</span><span><a href="https://jipaiban.junshian.cn">产品服务</a> · <a href="https://github.com/871922384/jipaiban-releases">GitHub</a></span></footer>
+  </div>
+</body>
+</html>

@@ -63,3 +63,16 @@ cd /Users/rex/code/jipaiban-releases
 - 打 Android 包：`/Users/rex/code/ji_paiban`
 - 发到公开仓：本仓库 `scripts/publish-release.sh`
 - 上 API / 管理端：`/Users/rex/code/jipaiban-api`，与本仓无关
+
+## Gitee 镜像同步
+
+gitee 仓：https://gitee.com/rexxurexxurt/jipaiban-releases（GitHub main 自动对推，remote 名 `gitee`）。
+
+发布 GitHub Release 后同步 gitee：
+
+1. `git push gitee main`（新仓先在 gitee 建仓；空仓不能设公开，推完代码再 PATCH `private=false`）。
+2. 创建 Release：`POST /api/v5/repos/rexxurexxurt/jipaiban-releases/releases`（form：`tag_name`、`target_commitish`、`name`、`body`）。
+3. 上传附件：`POST /api/v5/repos/rexxurexxurt/jipaiban-releases/releases/{release_id}/attach_files?access_token=$TOKEN`
+   - 注意：路径是 release **数字 id** + `attach_files`（下划线）；按 tag 或连字符 `attach-files` 都是 404。
+   - 鉴权只认私人令牌（`security find-internet-password -s gitee.com -w` 即令牌本体）；basic auth 可用于其余端点。
+4. 校验：未登录拉 `releases/download/<tag>/<文件名>` 应 200 且字节数一致。

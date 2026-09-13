@@ -52,3 +52,7 @@ IPA 不上传到 GitHub 文件树，也不作为公开 Release 附件；公开�
 ```
 
 不确定时先加 `--dry-run`。
+
+## Gitee 镜像
+
+国内直连：https://gitee.com/rexxurexxurt/jipaiban-releases （Release 与附件同步发布）
